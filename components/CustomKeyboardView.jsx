@@ -1,4 +1,10 @@
-import { KeyboardAvoidingView, ScrollView, Platform } from "react-native";
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  StyleSheet,
+  StatusBar,
+} from "react-native";
 import React from "react";
 
 const ios = Platform.OS === "ios";
@@ -6,7 +12,7 @@ export default function CustomKeyboardView({ children }) {
   return (
     <KeyboardAvoidingView
       behavior={ios ? "padding" : "height"}
-      style={{ flex: 1 }}
+      style={styles.container}
     >
       <ScrollView
         style={{ flex: 1 }}
@@ -18,3 +24,11 @@ export default function CustomKeyboardView({ children }) {
     </KeyboardAvoidingView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    backgroundColor: "#ffffff",
+  },
+});
