@@ -7,6 +7,7 @@ import {
   StatusBar,
   TouchableOpacity,
   FlatList,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import {
@@ -15,7 +16,7 @@ import {
 } from "react-native-responsive-screen";
 import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
 import { colorPalette } from "../../constant/color";
-import { BackspaceIcon } from "react-native-heroicons/outline";
+import { BackspaceIcon, FingerPrintIcon } from "react-native-heroicons/outline";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
@@ -50,10 +51,18 @@ const DialPad = ({ onPress }) => {
                 }}
               >
                 {item === "Del" ? (
-                  //   <TextRegular>Del</TextRegular>
-                  <BackspaceIcon size={hp(2)} />
+                  <BackspaceIcon color={colorPalette.primary} size={hp(4.5)} />
                 ) : item === "" ? (
-                  <TextRegular>Fin</TextRegular>
+                  <Pressable
+                    onPress={() =>
+                      Alert.alert("Fingerprint Bio?", "Coming very soon!")
+                    }
+                  >
+                    <FingerPrintIcon
+                      color={colorPalette.primary}
+                      size={hp(4.5)}
+                    />
+                  </Pressable>
                 ) : (
                   <TextBold
                     style={{ color: colorPalette.primary, fontSize: hp(4) }}
