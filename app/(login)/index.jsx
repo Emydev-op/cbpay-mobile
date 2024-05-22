@@ -14,7 +14,7 @@ import {
 } from "react-native-heroicons/outline";
 import { colorPalette } from "../../constant/color";
 
-export default function index() {
+export default function LoginMain() {
   const [phoneNo, setPhoneNo] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -115,18 +115,20 @@ export default function index() {
             </View>
           </View>
         </View>
-        <TextMedium style={{ fontSize: hp(2) }}>
-          Don’t have an account?{""}
+        <View className="flex-row">
+          <TextMedium style={{ fontSize: hp(2) }}>
+            Don’t have an account?{""}
+          </TextMedium>
           <Pressable>
             <TextMedium
-              className={`text-[${colorPalette.primary}]`}
+              className="mb-0"
               style={{ color: colorPalette.primary, fontSize: hp(2) }}
             >
               {" "}
               Sign Up
             </TextMedium>
           </Pressable>
-        </TextMedium>
+        </View>
       </View>
     </CustomKeyboardView>
   );
