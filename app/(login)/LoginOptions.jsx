@@ -1,26 +1,16 @@
-import { View, Text, Image, TouchableOpacity, Pressable } from "react-native";
+import { View, Text, Image, TouchableOpacity, Pressable, StyleSheet } from "react-native";
 import React from "react";
-import CustomKeyboardView from "../../components/CustomKeyboardView";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import TextRegular, { TextMedium } from "../../components/ThemeText";
-import Mobile from "../../assets/icon/mobile.svg";
-import { TextInput } from "react-native-paper";
-import {
-  DevicePhoneMobileIcon,
-  LockClosedIcon,
-} from "react-native-heroicons/outline";
+import FingerprintIcon from "../../assets/icon/fingerprint.svg";
 import { colorPalette } from "../../constant/color";
 
-export default function index() {
-  const [phoneNo, setPhoneNo] = React.useState("");
-  const [password, setPassword] = React.useState("");
-
+export default function LoginOptions() {
   return (
-    <CustomKeyboardView>
-      <View className="flex-1 items-center space-y-28 justify-center">
+    <View className="flex-1 items-center space-y-28 justify-center">
         <View className="space-y-10 " style={{ marginTop: hp(20) }}>
           <View className="items-center rounded-xl space-y-5">
             <Image
@@ -128,6 +118,7 @@ export default function index() {
           </Pressable>
         </TextMedium>
       </View>
-    </CustomKeyboardView>
-  );
+  )
 }
+
+const styles = StyleSheet.create({})
