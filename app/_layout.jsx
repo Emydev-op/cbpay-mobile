@@ -42,6 +42,7 @@ export default function RootLayout() {
           <Stack.Screen name="(login)/LoginPassword" />
           <Stack.Screen name="(login)/LoginOptions" />
           <Stack.Screen name="(login)/LoginPasscode" />
+          <Stack.Screen name="signup" />
         </Stack>
       </PaperProvider>
     </>

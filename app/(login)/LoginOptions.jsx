@@ -15,8 +15,10 @@ import {
 import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
 import FingerprintIcon from "../../assets/icon/fingerprint.svg";
 import { colorPalette } from "../../constant/color";
+import { useRouter } from "expo-router";
 
 export default function LoginOptions() {
+  const router = useRouter();
   return (
     <View
       className="flex-1 items-center justify-center"
@@ -45,13 +47,14 @@ export default function LoginOptions() {
             </Pressable>
 
             <TextBold
-              style={{ fontSize: hp(2.1), color: colorPalette.gray1,  }}
+              style={{ fontSize: hp(2.1), color: colorPalette.gray1 }}
               className="text-center"
             >
               OR
             </TextBold>
 
             <TouchableOpacity
+              onPress={() => router.push("/LoginPasscode")}
               style={{ height: hp(7), backgroundColor: colorPalette.primary2 }}
               className="rounded-full justify-center items-center"
             >
@@ -64,7 +67,6 @@ export default function LoginOptions() {
             </TouchableOpacity>
           </View>
         </View>
-        {/* login form */}
       </View>
     </View>
   );

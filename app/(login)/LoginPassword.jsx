@@ -1,4 +1,11 @@
-import { View, Text, Image, TouchableOpacity, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Pressable,
+  Alert,
+} from "react-native";
 import React from "react";
 import CustomKeyboardView from "../../components/CustomKeyboardView";
 import {
@@ -10,13 +17,18 @@ import Mobile from "../../assets/icon/mobile.svg";
 import { TextInput } from "react-native-paper";
 import {
   DevicePhoneMobileIcon,
+  EyeIcon,
+  EyeSlashIcon,
   LockClosedIcon,
 } from "react-native-heroicons/outline";
 import { colorPalette } from "../../constant/color";
+import { useRouter } from "expo-router";
 
 export default function LoginMain() {
   const [phoneNo, setPhoneNo] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
+  const router = useRouter();
 
   return (
     <CustomKeyboardView>
@@ -39,7 +51,8 @@ export default function LoginMain() {
           {/* login form */}
           <View className="space-y-5 w-full px-6">
             <View
-              className={`flex-row border-2 border-[${colorPalette.gray1}] px-3 w-full items-center rounded-xl`}
+              className="flex-row border-2 px-3 w-full items-center rounded-xl"
+              style={{ borderColor: colorPalette.gray1 }}
             >
               <DevicePhoneMobileIcon
                 color={colorPalette.gray1}
@@ -65,12 +78,14 @@ export default function LoginMain() {
             </View>
 
             <View
-              className={`flex-row border-2 border-[${colorPalette.gray1}] px-3 w-full items-center rounded-xl`}
+              className="flex-row border-2 px-3 w-full items-center rounded-xl"
+              style={{ borderColor: colorPalette.gray1 }}
             >
               <LockClosedIcon color={colorPalette.gray1} size={hp(3.5)} />
+
               <TextInput
                 label="Password"
-                secureTextEntry
+                secureTextEntry={!showPassword}
                 value={password}
                 onChangeText={(no) => setPassword(no)}
                 mode="outlined"
@@ -85,6 +100,16 @@ export default function LoginMain() {
                   borderColor: "transparent",
                 }}
               />
+              <Pressable
+                onPress={() => setShowPassword((prev) => !prev)}
+                className="pl-2 pr-1"
+              >
+                {showPassword ? (
+                  <EyeIcon color={colorPalette.gray1} size={hp(3.5)} />
+                ) : (
+                  <EyeSlashIcon color={colorPalette.gray1} size={hp(3.5)} />
+                )}
+              </Pressable>
             </View>
 
             <View className="space-y-5 pt-2">
@@ -119,7 +144,11 @@ export default function LoginMain() {
           <TextMedium style={{ fontSize: hp(2) }}>
             Don’t have an account?{""}
           </TextMedium>
-          <Pressable>
+          <Pressable
+            onPress={() => {
+              router.push("/signup");
+            }}
+          >
             <TextMedium
               className="mb-0"
               style={{ color: colorPalette.primary, fontSize: hp(2) }}

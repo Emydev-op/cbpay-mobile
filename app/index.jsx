@@ -6,7 +6,7 @@ export default function Home() {
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
-      router.push("/LoginPasscode");
+      router.push("/LoginPassword");
     }, 2000);
   }, []);
 
