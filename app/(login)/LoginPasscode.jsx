@@ -27,7 +27,6 @@ const DialPad = ({ onPress }) => {
     <View>
       <FlatList
         data={dialPad}
-        // className="bg-green-300 w-full"
         scrollEnabled={false}
         numColumns={3}
         columnWrapperStyle={{ gap: 30 }}
@@ -87,7 +86,6 @@ const DialPad = ({ onPress }) => {
 
 export default function LoginPasscode() {
   const [pinCode, setPinCode] = useState([]);
-  console.log(pinCode);
 
   return (
     <View className="flex-1 bg-white" style={styles.container}>

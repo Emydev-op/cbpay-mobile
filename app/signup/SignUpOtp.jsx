@@ -7,7 +7,10 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { colorPalette } from "../../constant/color";
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 import { DevicePhoneMobileIcon } from "react-native-heroicons/outline";
 import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
 import SignUpNav from "../../components/signup/SignUpNav";
@@ -67,14 +70,16 @@ export default function SignUpOtp() {
               </TouchableOpacity>
             </View>
           </View>
-          <TextMedium style={[styles.subheader, {paddingTop: wp(5)}]}>
+          <TextMedium style={[styles.subheader, { paddingTop: wp(5) }]}>
             This code will be expired 1 minute after this message.{" "}
             <TextBold style={{ color: colorPalette.primary }}>0:45s</TextBold>
           </TextMedium>
         </View>
         <View>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => {
+              router.push("/signup/ChoosePassword");
+            }}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full justify-center items-center"
           >

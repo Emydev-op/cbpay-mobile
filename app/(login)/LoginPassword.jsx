@@ -114,7 +114,7 @@ export default function LoginMain() {
 
             <View className="space-y-5 pt-2">
               <TouchableOpacity
-                // onPress={handleLogin}
+                onPress={() => router.push("/LoginOptions")}
                 style={{ height: hp(7), backgroundColor: colorPalette.primary }}
                 className="rounded-full justify-center items-center"
               >
