@@ -1,28 +1,26 @@
 import {
   View,
-  Text,
   StyleSheet,
   Platform,
   StatusBar,
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { colorPalette } from "../../constant/color";
 import {
   heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import {
   DevicePhoneMobileIcon,
-  LockClosedIcon,
 } from "react-native-heroicons/outline";
 import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
 import SignUpNav from "../../components/signup/SignUpNav";
 import { TextInput } from "react-native-paper";
+import { useRouter } from "expo-router";
 
 export default function PhoneSignup() {
   const [phoneNo, setPhoneNo] = useState("");
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <SignUpNav name={"Sign Up"} />
@@ -57,7 +55,7 @@ export default function PhoneSignup() {
         </View>
         <View>
           <TouchableOpacity
-            // onPress={handleLogin}
+            onPress={() => router.push("signup/SignUpOtp")}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full justify-center items-center"
           >
