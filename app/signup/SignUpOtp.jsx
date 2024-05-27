@@ -5,7 +5,7 @@ import {
   StatusBar,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { colorPalette } from "../../constant/color";
 import {
   heightPercentageToDP as hp,
@@ -18,8 +18,37 @@ import { TextInput } from "react-native-paper";
 import { useRouter } from "expo-router";
 
 export default function SignUpOtp() {
+  const [timer, setTimer] = useState(59);
+  const [disabled, setDisabled] = useState(false);
   const [otpCode, setOtpCode] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (timer > 0) {
+        setTimer((prevTimer) => prevTimer - 1); // Decrement timer every second
+      } else {
+        setDisabled(false); // Enable button when timer reaches 0
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    // Cleanup function to clear interval when component unmounts or timer reaches 0
+    return () => clearInterval(interval);
+  }, [timer]);
+
+  const handleResendOTP = () => {
+    // Logic to resend OTP
+    // Disable button again
+    setDisabled(true);
+    // Reset timer to 30 seconds
+    setTimer(59);
+  };
+
+  const handleVerify = () => {
+router.push("/signup/VerifyID");
+  }
+
   return (
     <View style={styles.container}>
       <SignUpNav name={"Sign Up"} />
@@ -55,7 +84,8 @@ export default function SignUpOtp() {
             </View>
             <View style={{ width: "40%" }}>
               <TouchableOpacity
-                onPress={() => {}}
+                onPress={handleResendOTP}
+                disabled={disabled}
                 style={{
                   height: hp(7),
                   backgroundColor: colorPalette.primary2,
@@ -72,14 +102,12 @@ export default function SignUpOtp() {
           </View>
           <TextMedium style={[styles.subheader, { paddingTop: wp(5) }]}>
             This code will be expired 1 minute after this message.{" "}
-            <TextBold style={{ color: colorPalette.primary }}>0:45s</TextBold>
+            <TextBold style={{ color: colorPalette.primary }}>0:{timer}s</TextBold>
           </TextMedium>
         </View>
         <View>
           <TouchableOpacity
-            onPress={() => {
-              router.push("/signup/ChoosePassword");
-            }}
+            onPress={handleVerify}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full justify-center items-center"
           >
