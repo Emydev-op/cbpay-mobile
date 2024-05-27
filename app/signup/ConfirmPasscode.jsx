@@ -6,13 +6,12 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { colorPalette } from "../../constant/color";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
 import SignUpNav from "../../components/signup/SignUpNav";
 import * as Haptics from "expo-haptics";
-import { useRouter } from "expo-router";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
@@ -80,25 +79,19 @@ const DialPad = ({ onPress }) => {
   );
 };
 
-export default function SetPasscode() {
+export default function ConfirmPasscode() {
   const [pinCode, setPinCode] = useState([]);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (pinCode.length === 6) {
-      router.push("/signup/ConfirmPasscode");
-    }
-  }, [pinCode]);
-
+  console.log(pinCode);
   return (
     <View style={styles.container}>
       <SignUpNav name={"Sign Up"} />
       <View className="px-4 flex-1 justify-between pb-4">
+        
         <View className="h-[30%]">
           <View className="space-y-3">
-            <TextBold style={styles.header}>Passcode</TextBold>
+            <TextBold style={styles.header}>Confirm Passcode</TextBold>
             <TextRegular style={styles.subheader}>
-              Set a passcode to enter your app and confirm payments.
+              Double-check your security by re-entering your passcode.
             </TextRegular>
 
             <View className="flex-row space-x-4 pt-8 justify-center">

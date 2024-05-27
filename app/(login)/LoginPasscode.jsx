@@ -107,7 +107,8 @@ export default function LoginPasscode() {
         </View>
         <View className="flex-row space-x-4 pt-1">
           {[...Array(pinLength).keys()].map((index) => {
-            const isSelected = !!pinCode[index];
+            const isSelected =
+              pinCode[index] !== undefined && pinCode[index] !== null;
             return (
               <View
                 style={{

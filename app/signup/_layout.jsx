@@ -8,6 +8,7 @@ export default function _layout() {
       <Stack.Screen name="SignUpOtp" />
       <Stack.Screen name="ChoosePassword" />
       <Stack.Screen name="SetPasscode" />
+      <Stack.Screen name="ConfirmPasscode" />
     </Stack>
   );
 }
