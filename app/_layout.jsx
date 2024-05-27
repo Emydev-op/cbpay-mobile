@@ -34,9 +34,15 @@ export default function RootLayout() {
     <>
       <PaperProvider>
         <StatusBar style="dark" />
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(login)" />
-          {/* <Stack.Screen name="index" /> */}
+        <Stack
+          screenOptions={{ headerShown: false }}
+          initialRouteName="(login)/LoginOptions"
+        >
+          <Stack.Screen name="index" />
+          <Stack.Screen name="(login)/LoginPassword" />
+          <Stack.Screen name="(login)/LoginOptions" />
+          <Stack.Screen name="(login)/LoginPasscode" />
+          <Stack.Screen name="signup" />
         </Stack>
       </PaperProvider>
     </>
