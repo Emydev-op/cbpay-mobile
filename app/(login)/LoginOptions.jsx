@@ -6,6 +6,7 @@ import {
   Platform,
   StatusBar,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 import React from "react";
 import {
@@ -20,7 +21,7 @@ import { useRouter } from "expo-router";
 export default function LoginOptions() {
   const router = useRouter();
   return (
-    <View
+    <SafeAreaView
       className="flex-1 items-center justify-center"
       style={styles.container}
     >
@@ -68,7 +69,7 @@ export default function LoginOptions() {
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
