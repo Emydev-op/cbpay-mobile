@@ -5,6 +5,7 @@ import {
   StatusBar,
   TouchableOpacity,
   Pressable,
+  SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
 import { colorPalette } from "../../constant/color";
@@ -26,7 +27,7 @@ export default function ChoosePassword() {
   const [showPassword2, setShowPassword2] = useState(false);
   const router = useRouter();
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <SignUpNav name={"Sign Up"} />
       <View className="px-4 flex-1 justify-between pb-4">
         <View className="space-y-3">
@@ -124,7 +125,7 @@ export default function ChoosePassword() {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

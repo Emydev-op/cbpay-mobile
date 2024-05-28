@@ -4,6 +4,7 @@ import {
   Platform,
   StatusBar,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { colorPalette } from "../../constant/color";
@@ -50,7 +51,7 @@ router.push("/signup/VerifyID");
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <SignUpNav name={"Sign Up"} />
       <View className="px-4 flex-1 justify-between pb-4">
         <View className="space-y-3">
@@ -119,7 +120,7 @@ router.push("/signup/VerifyID");
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

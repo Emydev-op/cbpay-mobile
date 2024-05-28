@@ -5,6 +5,7 @@ import {
   StatusBar,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
 import { colorPalette } from "../../constant/color";
@@ -21,7 +22,7 @@ export default function VerifyID() {
     router.push("signup/ChoosePassword");
   };
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <SignUpNav name={"Sign Up"} />
       <View className="px-4 flex-1 justify-between pb-4">
         <ScrollView showsVerticalScrollIndicator={false} className="space-y-3">
@@ -44,7 +45,7 @@ export default function VerifyID() {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
