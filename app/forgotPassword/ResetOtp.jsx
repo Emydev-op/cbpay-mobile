@@ -46,7 +46,7 @@ export default function ResetOtp() {
   };
 
   const handleVerify = () => {
-    router.push("/signup/VerifyID");
+    router.push("/forgotPassword/ResetPassword");
   };
 
   return (
