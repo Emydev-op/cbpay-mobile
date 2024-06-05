@@ -1,10 +1,9 @@
 import {
   View,
-  Text,
   Image,
   TouchableOpacity,
   Pressable,
-  Alert,
+  SafeAreaView,
 } from "react-native";
 import React from "react";
 import CustomKeyboardView from "../../components/CustomKeyboardView";
@@ -13,7 +12,6 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import TextRegular, { TextMedium } from "../../components/ThemeText";
-import Mobile from "../../assets/icon/mobile.svg";
 import { TextInput } from "react-native-paper";
 import {
   DevicePhoneMobileIcon,
@@ -32,7 +30,7 @@ export default function LoginMain() {
 
   return (
     <CustomKeyboardView>
-      <View className="flex-1 items-center space-y-28 justify-center">
+      <SafeAreaView className="flex-1 items-center space-y-28 justify-center">
         <View className="space-y-10 " style={{ marginTop: hp(20) }}>
           <View className="items-center rounded-xl space-y-5">
             <Image
@@ -158,7 +156,7 @@ export default function LoginMain() {
             </TextMedium>
           </Pressable>
         </View>
-      </View>
+      </SafeAreaView>
     </CustomKeyboardView>
   );
 }

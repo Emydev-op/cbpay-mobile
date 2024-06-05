@@ -5,6 +5,7 @@ import {
   StatusBar,
   TouchableOpacity,
   FlatList,
+  SafeAreaView,
 } from "react-native";
 import { useState } from "react";
 import { colorPalette } from "../../constant/color";
@@ -83,7 +84,7 @@ export default function ConfirmPasscode() {
   const [pinCode, setPinCode] = useState([]);
   console.log(pinCode);
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <SignUpNav name={"Sign Up"} />
       <View className="px-4 flex-1 justify-between pb-4">
         
@@ -131,7 +132,7 @@ export default function ConfirmPasscode() {
           />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

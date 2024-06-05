@@ -9,11 +9,11 @@ import { useRouter } from "expo-router";
 export default function SignUpNav({name}) {
   const router = useRouter();
   return (
-    <View className="flex-row mb-6 px-6 py-4 items-center space-x-3">
+    <View className="flex-row mb-6 px-3 py-4 items-center space-x-3">
       <Pressable
         onPress={() => {
           router.back();
-        }}
+        }} className="px-1"
       >
         <ChevronLeftIcon color={colorPalette.gray2} size={hp(3)} style={{padding:hp(2)}} />
       </Pressable>

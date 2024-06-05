@@ -8,13 +8,14 @@ import {
   TouchableOpacity,
   FlatList,
   Alert,
+  SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
-import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
+import TextRegular, { TextBold } from "../../components/ThemeText";
 import { colorPalette } from "../../constant/color";
 import { BackspaceIcon, FingerPrintIcon } from "react-native-heroicons/outline";
 import * as Haptics from "expo-haptics";
@@ -88,7 +89,7 @@ export default function LoginPasscode() {
   const [pinCode, setPinCode] = useState([]);
 
   return (
-    <View className="flex-1 bg-white" style={styles.container}>
+    <SafeAreaView className="flex-1 bg-white" style={styles.container}>
       <View className="h-[40%] items-center justify-end space-y-6" style={{}}>
         <Image
           source={require("../../assets/logo/logo.png")}
@@ -137,7 +138,7 @@ export default function LoginPasscode() {
           }}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
