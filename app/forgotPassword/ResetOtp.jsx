@@ -11,12 +11,13 @@ import { colorPalette } from "../../constant/color";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from "react-native-responsive-screen";import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
+} from "react-native-responsive-screen";
+import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
 import SignUpNav from "../../components/signup/SignUpNav";
 import { TextInput } from "react-native-paper";
 import { useRouter } from "expo-router";
 
-export default function SignUpOtp() {
+export default function ResetOtp() {
   const [timer, setTimer] = useState(59);
   const [disabled, setDisabled] = useState(false);
   const [otpCode, setOtpCode] = useState("");
@@ -45,12 +46,12 @@ export default function SignUpOtp() {
   };
 
   const handleVerify = () => {
-router.push("/signup/VerifyID");
-  }
+    router.push("/signup/VerifyID");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <SignUpNav name={"Sign Up"} />
+      <SignUpNav name={"Forgot Password"} />
       <View className="px-4 flex-1 justify-between pb-4">
         <View className="space-y-3">
           <TextBold style={styles.header}>OTP Verification</TextBold>
@@ -101,7 +102,9 @@ router.push("/signup/VerifyID");
           </View>
           <TextMedium style={[styles.subheader, { paddingTop: wp(5) }]}>
             This code will be expired 1 minute after this message.{" "}
-            <TextBold style={{ color: colorPalette.primary }}>0:{timer}s</TextBold>
+            <TextBold style={{ color: colorPalette.primary }}>
+              0:{timer}s
+            </TextBold>
           </TextMedium>
         </View>
         <View>

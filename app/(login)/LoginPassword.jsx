@@ -123,7 +123,7 @@ export default function LoginMain() {
                 </TextMedium>
               </TouchableOpacity>
 
-              <Pressable>
+              <Pressable onPress={() => {router.push("/forgotPassword")}}>
                 <TextMedium
                   className={`text-lg text-center`}
                   style={{
