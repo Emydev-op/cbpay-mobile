@@ -13,6 +13,7 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
 import SignUpNav from "../../components/signup/SignUpNav";
 import * as Haptics from "expo-haptics";
+import { useRouter } from "expo-router";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
@@ -82,6 +83,7 @@ const DialPad = ({ onPress }) => {
 
 export default function ConfirmPasscode() {
   const [pinCode, setPinCode] = useState([]);
+  const router = useRouter()
   
   useEffect(() => {
     if (pinCode.length === 6) {

@@ -36,7 +36,7 @@ export default function RootLayout() {
         <StatusBar style="dark" />
         <Stack
           screenOptions={{ headerShown: false }}
-          initialRouteName="(login)/LoginOptions"
+          initialRouteName="main"
         >
           <Stack.Screen name="index" />
           <Stack.Screen name="(login)/LoginPassword" />

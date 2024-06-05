@@ -9,7 +9,7 @@ import {
   Alert,
   SafeAreaView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -18,6 +18,7 @@ import TextRegular, { TextBold } from "../../components/ThemeText";
 import { colorPalette } from "../../constant/color";
 import { BackspaceIcon, FingerPrintIcon } from "react-native-heroicons/outline";
 import * as Haptics from "expo-haptics";
+import { useRouter } from "expo-router";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
@@ -86,6 +87,12 @@ const DialPad = ({ onPress }) => {
 
 export default function LoginPasscode() {
   const [pinCode, setPinCode] = useState([]);
+  const router = useRouter();
+  useEffect(() => {
+    if (pinCode.length === 6) {
+      router.push("/main");
+    }
+  }, [pinCode]);
 
   return (
     <SafeAreaView className="flex-1 bg-white" style={styles.container}>
