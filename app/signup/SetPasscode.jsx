@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
+  Pressable,
   FlatList,
   SafeAreaView,
 } from "react-native";
@@ -30,7 +30,7 @@ const DialPad = ({ onPress }) => {
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
+            <Pressable
               onPress={() => {
                 onPress(item);
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
@@ -73,7 +73,7 @@ const DialPad = ({ onPress }) => {
                   </View>
                 )}
               </View>
-            </TouchableOpacity>
+            </Pressable>
           );
         }}
       />

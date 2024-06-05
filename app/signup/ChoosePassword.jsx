@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
   Pressable,
   SafeAreaView,
 } from "react-native";
@@ -112,7 +111,7 @@ export default function ChoosePassword() {
           </View>
         </View>
         <View>
-          <TouchableOpacity
+          <Pressable
             onPress={() => router.push("signup/SetPasscode")}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full justify-center items-center"
@@ -122,7 +121,7 @@ export default function ChoosePassword() {
             >
               Sign Up
             </TextMedium>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>

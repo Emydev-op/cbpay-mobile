@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
+  Pressable,
   SafeAreaView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
@@ -82,7 +82,7 @@ router.push("/signup/VerifyID");
               />
             </View>
             <View style={{ width: "40%" }}>
-              <TouchableOpacity
+              <Pressable
                 onPress={handleResendOTP}
                 disabled={disabled}
                 style={{
@@ -96,7 +96,7 @@ router.push("/signup/VerifyID");
                 >
                   Resend
                 </TextMedium>
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </View>
           <TextMedium style={[styles.subheader, { paddingTop: wp(5) }]}>
@@ -105,7 +105,7 @@ router.push("/signup/VerifyID");
           </TextMedium>
         </View>
         <View>
-          <TouchableOpacity
+          <Pressable
             onPress={handleVerify}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full justify-center items-center"
@@ -115,7 +115,7 @@ router.push("/signup/VerifyID");
             >
               Verify
             </TextMedium>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>

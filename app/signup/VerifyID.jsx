@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
   ScrollView,
   SafeAreaView,
   Pressable,
@@ -264,7 +263,7 @@ export default function VerifyID() {
         </View>
 
         <View>
-          <TouchableOpacity
+          <Pressable
             onPress={handleVerify}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full justify-center items-center"
@@ -274,7 +273,7 @@ export default function VerifyID() {
             >
               Verify
             </TextMedium>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>

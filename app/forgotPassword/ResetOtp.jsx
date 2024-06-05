@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
+  Pressable,
   SafeAreaView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
@@ -83,7 +83,7 @@ export default function ResetOtp() {
               />
             </View>
             <View style={{ width: "40%" }}>
-              <TouchableOpacity
+              <Pressable
                 onPress={handleResendOTP}
                 disabled={disabled}
                 style={{
@@ -97,7 +97,7 @@ export default function ResetOtp() {
                 >
                   Resend
                 </TextMedium>
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </View>
           <TextMedium style={[styles.subheader, { paddingTop: wp(5) }]}>
@@ -108,7 +108,7 @@ export default function ResetOtp() {
           </TextMedium>
         </View>
         <View>
-          <TouchableOpacity
+          <Pressable
             onPress={handleVerify}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full justify-center items-center"
@@ -118,7 +118,7 @@ export default function ResetOtp() {
             >
               Verify
             </TextMedium>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>

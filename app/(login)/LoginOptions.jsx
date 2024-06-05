@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
   SafeAreaView,
 } from "react-native";
 import React from "react";
@@ -54,7 +53,7 @@ export default function LoginOptions() {
               OR
             </TextBold>
 
-            <TouchableOpacity
+            <Pressable
               onPress={() => router.push("/LoginPasscode")}
               style={{ height: hp(7), backgroundColor: colorPalette.primary2 }}
               className="rounded-full justify-center items-center"
@@ -65,7 +64,7 @@ export default function LoginOptions() {
               >
                 Use Passcode
               </TextMedium>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       </View>

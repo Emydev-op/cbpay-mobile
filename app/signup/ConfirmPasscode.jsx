@@ -3,11 +3,11 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
+  Pressable,
   FlatList,
   SafeAreaView,
 } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { colorPalette } from "../../constant/color";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
@@ -29,7 +29,7 @@ const DialPad = ({ onPress }) => {
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
+            <Pressable
               onPress={() => {
                 onPress(item);
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
@@ -72,7 +72,7 @@ const DialPad = ({ onPress }) => {
                   </View>
                 )}
               </View>
-            </TouchableOpacity>
+            </Pressable>
           );
         }}
       />
@@ -82,7 +82,13 @@ const DialPad = ({ onPress }) => {
 
 export default function ConfirmPasscode() {
   const [pinCode, setPinCode] = useState([]);
-  console.log(pinCode);
+  
+  useEffect(() => {
+    if (pinCode.length === 6) {
+      router.push("/LoginPassword");
+    }
+  }, [pinCode]);
+  
   return (
     <SafeAreaView style={styles.container}>
       <SignUpNav name={"Sign Up"} />

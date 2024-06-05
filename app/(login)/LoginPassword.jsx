@@ -1,7 +1,6 @@
 import {
   View,
   Image,
-  TouchableOpacity,
   Pressable,
   SafeAreaView,
 } from "react-native";
@@ -111,7 +110,7 @@ export default function LoginMain() {
             </View>
 
             <View className="space-y-5 pt-2">
-              <TouchableOpacity
+              <Pressable
                 onPress={() => router.push("/LoginOptions")}
                 style={{ height: hp(7), backgroundColor: colorPalette.primary }}
                 className="rounded-full justify-center items-center"
@@ -121,7 +120,7 @@ export default function LoginMain() {
                 >
                   Login
                 </TextMedium>
-              </TouchableOpacity>
+              </Pressable>
 
               <Pressable onPress={() => {router.push("/forgotPassword")}}>
                 <TextMedium

@@ -1,11 +1,10 @@
 import {
   View,
   Image,
-  Pressable,
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
+  Pressable,
   FlatList,
   Alert,
   SafeAreaView,
@@ -35,7 +34,7 @@ const DialPad = ({ onPress }) => {
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
+            <Pressable
               onPress={() => {
                 onPress(item);
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
@@ -77,7 +76,7 @@ const DialPad = ({ onPress }) => {
                   </TextBold>
                 )}
               </View>
-            </TouchableOpacity>
+            </Pressable>
           );
         }}
       />

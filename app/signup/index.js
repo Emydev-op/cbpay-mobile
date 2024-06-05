@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-  TouchableOpacity,
+  Pressable,
   SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
@@ -55,7 +55,7 @@ export default function PhoneSignup() {
           </View>
         </View>
         <View>
-          <TouchableOpacity
+          <Pressable
             onPress={() => router.push("signup/SignUpOtp")}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full justify-center items-center"
@@ -65,7 +65,7 @@ export default function PhoneSignup() {
             >
               Get OTP
             </TextMedium>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
