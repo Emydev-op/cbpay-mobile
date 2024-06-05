@@ -91,7 +91,7 @@ router.push("/signup/VerifyID");
                   height: hp(7),
                   backgroundColor: colorPalette.primary2,
                 }}
-                className="rounded-full justify-center items-center"
+                className={`rounded-full justify-center items-center`}
               >
                 <TextMedium
                   style={{ fontSize: hp(2.5), color: colorPalette.primary }}
