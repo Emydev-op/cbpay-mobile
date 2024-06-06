@@ -6,15 +6,16 @@ import {
   StatusBar,
   Pressable,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
-import { TextBold, TextMedium } from "../../components/ThemeText";
+import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
 import { colorPalette } from "../../constant/color";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
-import React from "react";
+import React, { useState } from "react";
 
 // icons
 import Bell from "../../assets/icon/bell.svg";
@@ -24,7 +25,9 @@ import Topup from "../../assets/icon/topup.svg";
 import Bill from "../../assets/icon/bill.svg";
 import Request from "../../assets/icon/request.svg";
 import Withdraw from "../../assets/icon/withdraw.svg";
-import Topup2 from "../../assets/icon/topup2.svg";
+import Download from "../../assets/icon/download.svg";
+import Internet from "../../assets/icon/internet.svg";
+import Expense from "../../assets/icon/expense.svg";
 
 const options = [
   { name: "Transfer", icon: <Transfer /> },
@@ -37,7 +40,7 @@ const options = [
 const transactions = [
   {
     name: "Mobile Topup",
-    icon: <Topup2 />,
+    icon: <Topup />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
     amount: "13,000",
@@ -45,15 +48,15 @@ const transactions = [
   },
   {
     name: "James",
-    icon: <Topup2 />,
+    icon: <Download />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
     amount: "13,000",
-    status: "debit",
+    status: "credit",
   },
   {
     name: "BRT Ticket",
-    icon: <Topup2 />,
+    icon: <Expense />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
     amount: "13,000",
@@ -61,7 +64,7 @@ const transactions = [
   },
   {
     name: "Airtel",
-    icon: <Topup2 />,
+    icon: <Topup />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
     amount: "13,000",
@@ -69,7 +72,23 @@ const transactions = [
   },
   {
     name: "Sophia",
-    icon: <Topup2 />,
+    icon: <Download />,
+    date: "Mar 27, 2024",
+    time: "11:04 AM",
+    amount: "13,000",
+    status: "credit",
+  },
+  {
+    name: "IKEC",
+    icon: <Internet />,
+    date: "Mar 27, 2024",
+    time: "11:04 AM",
+    amount: "13,000",
+    status: "debit",
+  },
+  {
+    name: "Glo",
+    icon: <Topup />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
     amount: "13,000",
@@ -77,23 +96,16 @@ const transactions = [
   },
   {
     name: "Steve Paul",
-    icon: <Topup2 />,
+    icon: <Expense />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
     amount: "13,000",
     status: "debit",
   },
-  {
-    name: "IKEC",
-    icon: <Topup2 />,
-    date: "Mar 27, 2024",
-    time: "11:04 AM",
-    amount: "13,000",
-    status: "debit",
-  },
+
   {
     name: "Spotify",
-    icon: <Topup2 />,
+    icon: <Internet />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
     amount: "13,000",
@@ -102,6 +114,7 @@ const transactions = [
 ];
 
 export default function index() {
+  const [refresh, setRefresh] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       <View className="flex-row justify-between px-4 items-center py-4">
@@ -182,6 +195,57 @@ export default function index() {
           </TouchableOpacity>
         ))}
       </View>
+      <View className="mb-2 mx-4 mt-4">
+        <TextBold className="text-lg">Recent History</TextBold>
+      </View>
+
+      <FlatList
+        data={transactions}
+        className="mx-4"
+        keyExtractor={(item) => item.name}
+        onRefresh={() => {
+          setRefresh(true);
+          setTimeout(() => {
+            setRefresh(false);
+          }, 3000);
+        }}
+        refreshing={refresh}
+        renderItem={({ item }) => (
+          <View className="flex-row justify-between py-2">
+            <View className="flex-row space-x-2">
+              <View
+                style={{
+                  backgroundColor: colorPalette?.primary2,
+                  width: 40,
+                  height: 40,
+                }}
+                className="rounded-full justify-center items-center"
+              >
+                {item?.icon}
+              </View>
+              <View>
+                <TextMedium
+                  style={{ color: colorPalette?.gray1, fontSize: 10 }}
+                >
+                  {item?.date} | {item?.time}
+                </TextMedium>
+                <TextMedium style={{ fontSize: 16 }}>{item?.name}</TextMedium>
+              </View>
+            </View>
+            <TextBold
+              style={{
+                fontSize: 18,
+                color:
+                  item?.status === "debit"
+                    ? colorPalette.error
+                    : colorPalette.success,
+              }}
+            >
+              {item?.status === "debit" ? "-" : "+"} ₦{item?.amount}
+            </TextBold>
+          </View>
+        )}
+      />
     </SafeAreaView>
   );
 }
@@ -190,7 +254,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    backgroundColor: "plum",
+    backgroundColor: "white",
   },
   card: {
     paddingLeft: 15,
