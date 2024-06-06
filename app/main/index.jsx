@@ -43,7 +43,7 @@ const transactions = [
     icon: <Topup />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
-    amount: "13,000",
+    amount: "2,000",
     status: "debit",
   },
   {
@@ -51,7 +51,7 @@ const transactions = [
     icon: <Download />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
-    amount: "13,000",
+    amount: "210,000",
     status: "credit",
   },
   {
@@ -59,7 +59,7 @@ const transactions = [
     icon: <Expense />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
-    amount: "13,000",
+    amount: "900",
     status: "debit",
   },
   {
@@ -67,7 +67,7 @@ const transactions = [
     icon: <Topup />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
-    amount: "13,000",
+    amount: "2,500",
     status: "debit",
   },
   {
@@ -75,7 +75,7 @@ const transactions = [
     icon: <Download />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
-    amount: "13,000",
+    amount: "42,000",
     status: "credit",
   },
   {
@@ -83,7 +83,7 @@ const transactions = [
     icon: <Internet />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
-    amount: "13,000",
+    amount: "11,400",
     status: "debit",
   },
   {
@@ -91,7 +91,7 @@ const transactions = [
     icon: <Topup />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
-    amount: "13,000",
+    amount: "800",
     status: "debit",
   },
   {
@@ -108,21 +108,53 @@ const transactions = [
     icon: <Internet />,
     date: "Mar 27, 2024",
     time: "11:04 AM",
-    amount: "13,000",
+    amount: "900",
     status: "debit",
   },
 ];
+
+const TransactionCard = ({ item }) => (
+  <View className="flex-row justify-between py-2">
+    <View className="flex-row space-x-2">
+      <View
+        style={{
+          backgroundColor: colorPalette?.primary2,
+          width: 40,
+          height: 40,
+        }}
+        className="rounded-full justify-center items-center"
+      >
+        {item?.icon}
+      </View>
+      <View>
+        <TextMedium style={{ color: colorPalette?.gray1, fontSize: 10 }}>
+          {item?.date} | {item?.time}
+        </TextMedium>
+        <TextMedium style={{ fontSize: 16 }}>{item?.name}</TextMedium>
+      </View>
+    </View>
+    <TextBold
+      style={{
+        fontSize: 18,
+        color:
+          item?.status === "debit" ? colorPalette.error : colorPalette.success,
+      }}
+    >
+      {item?.status === "debit" ? "-" : "+"} ₦{item?.amount}
+    </TextBold>
+  </View>
+);
 
 export default function index() {
   const [refresh, setRefresh] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       <View className="flex-row justify-between px-4 items-center py-4">
-        <TextBold
-          className=""
-          style={{ color: colorPalette.primary, fontSize: 25 }}
-        >
-          CBPay
+        <TextBold style={{ color: colorPalette.primary, fontSize: 25 }}>
+          <TextMedium style={{ color: colorPalette.primary, fontSize: 18 }}>
+            Hello
+          </TextMedium>{" "}
+          Samuel
         </TextBold>
         <Pressable>
           <Bell />
@@ -210,41 +242,7 @@ export default function index() {
           }, 3000);
         }}
         refreshing={refresh}
-        renderItem={({ item }) => (
-          <View className="flex-row justify-between py-2">
-            <View className="flex-row space-x-2">
-              <View
-                style={{
-                  backgroundColor: colorPalette?.primary2,
-                  width: 40,
-                  height: 40,
-                }}
-                className="rounded-full justify-center items-center"
-              >
-                {item?.icon}
-              </View>
-              <View>
-                <TextMedium
-                  style={{ color: colorPalette?.gray1, fontSize: 10 }}
-                >
-                  {item?.date} | {item?.time}
-                </TextMedium>
-                <TextMedium style={{ fontSize: 16 }}>{item?.name}</TextMedium>
-              </View>
-            </View>
-            <TextBold
-              style={{
-                fontSize: 18,
-                color:
-                  item?.status === "debit"
-                    ? colorPalette.error
-                    : colorPalette.success,
-              }}
-            >
-              {item?.status === "debit" ? "-" : "+"} ₦{item?.amount}
-            </TextBold>
-          </View>
-        )}
+        renderItem={({ item }) => <TransactionCard item={item} />}
       />
     </SafeAreaView>
   );
