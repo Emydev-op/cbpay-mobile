@@ -42,7 +42,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="Account"
+        name="Account/index"
         options={{
           title: "Account",
           tabBarIcon: ({ focused }) => (
@@ -64,7 +64,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="History"
+        name="History/index"
         options={{
           title: "History",
           tabBarIcon: ({ focused }) => (
@@ -75,7 +75,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="Setting"
+        name="Setting/index"
         options={{
           title: "Setting",
           tabBarIcon: ({ focused }) => (

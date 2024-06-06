@@ -7,9 +7,9 @@ import {
   ScrollView,
 } from "react-native";
 import React from "react";
-import { TextBold, TextMedium } from "../../components/ThemeText";
-import { colorPalette } from "../../constant/color";
-import WalletCard from "../../components/WalletCard";
+import { TextBold } from "../../../components/ThemeText";
+import { colorPalette } from "../../../constant/color";
+import WalletCard from "../../../components/WalletCard";
 
 export default function Account() {
   return (
@@ -19,10 +19,7 @@ export default function Account() {
           Account
         </TextBold>
       </View>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        className="bg-white"
-      >
+      <ScrollView showsVerticalScrollIndicator={false} className="bg-white">
         <View className="px-4 mb-6">
           <TextBold
             className="mb-2 text-sm"
