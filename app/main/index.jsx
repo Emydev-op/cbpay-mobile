@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import TextRegular, { TextBold, TextMedium } from "../../components/ThemeText";
+import { TextBold, TextMedium } from "../../components/ThemeText";
 import { colorPalette } from "../../constant/color";
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -28,6 +28,7 @@ import Withdraw from "../../assets/icon/withdraw.svg";
 import Download from "../../assets/icon/download.svg";
 import Internet from "../../assets/icon/internet.svg";
 import Expense from "../../assets/icon/expense.svg";
+import WalletCard from "../../components/WalletCard";
 
 const options = [
   { name: "Transfer", icon: <Transfer /> },
@@ -175,35 +176,11 @@ export default function index() {
           </Pressable>
         </View>
 
-        <LinearGradient
-          colors={["#0055b2", "#002f94"]}
-          className="rounded-2xl px-6 py-7 shadow-lg"
-          style={{
-            elevation: 25,
-            shadowColor: "rgba(0,47,148,50%)",
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.5,
-            shadowRadius: 2,
-          }}
-        >
-          <View className="flex-row justify-between">
-            <TextMedium className="text-white text-lg mb-4">
-              0987-6543-2810-7821
-            </TextMedium>
-            <Pressable>
-              <Barcode />
-            </Pressable>
-          </View>
-          <TextBold
-            className="text-white tracking-widest"
-            style={{ fontSize: 26 }}
-          >
-            ₦24,600.00
-          </TextBold>
-          <TextMedium className="text-white text-base mt-2">
-            Smart Account
-          </TextMedium>
-        </LinearGradient>
+        <WalletCard
+          accNumber="0987-6543-2810-7821"
+          type="Smart Account"
+          amount="₦24,600.00"
+        />
       </View>
 
       <View
