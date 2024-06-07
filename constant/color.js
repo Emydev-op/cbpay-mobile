@@ -8,6 +8,7 @@ export const colorPalette = {
   gray2: "#272A2F",
   gray3: "#5D646F",
   gray4: "#92979f",
+  gray5: "#eff0f1",
   error: "#D32E2D",
   success: "#19A24A",
 };

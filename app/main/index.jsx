@@ -19,7 +19,6 @@ import React, { useState } from "react";
 
 // icons
 import Bell from "../../assets/icon/bell.svg";
-import Barcode from "../../assets/icon/barcode.svg";
 import Transfer from "../../assets/icon/transfer.svg";
 import Topup from "../../assets/icon/topup.svg";
 import Bill from "../../assets/icon/bill.svg";
