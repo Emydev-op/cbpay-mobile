@@ -17,28 +17,32 @@ import Topup from "../../../assets/icon/topup.svg";
 import Download from "../../../assets/icon/download.svg";
 import Internet from "../../../assets/icon/internet.svg";
 import Expense from "../../../assets/icon/expense.svg";
-import WalletCard from "../../../components/WalletCard";
 
 const transactions = [
   {
-    month: "March",
+    month: "June 2024",
     data: [
       {
-        name: "Mobile Topup",
-        icon: <Topup />,
+        name: "IKEC",
+        icon: <Internet />,
         date: "Mar 27, 2024",
         time: "11:04 AM",
-        amount: "2,000",
+        amount: "11,400",
         status: "debit",
       },
       {
-        name: "James",
-        icon: <Download />,
+        name: "Glo",
+        icon: <Topup />,
         date: "Mar 27, 2024",
         time: "11:04 AM",
-        amount: "210,000",
-        status: "credit",
+        amount: "800",
+        status: "debit",
       },
+    ],
+  },
+  {
+    month: "May 2024",
+    data: [
       {
         name: "BRT Ticket",
         icon: <Expense />,
@@ -55,10 +59,18 @@ const transactions = [
         amount: "2,500",
         status: "debit",
       },
+      {
+        name: "Sophia",
+        icon: <Download />,
+        date: "Mar 27, 2024",
+        time: "11:04 AM",
+        amount: "42,000",
+        status: "credit",
+      },
     ],
   },
   {
-    month: "April",
+    month: "April 2024",
     data: [
       {
         name: "IKEC",
@@ -95,8 +107,24 @@ const transactions = [
     ],
   },
   {
-    month: "May",
+    month: "March 2024",
     data: [
+      {
+        name: "Mobile Topup",
+        icon: <Topup />,
+        date: "Mar 27, 2024",
+        time: "11:04 AM",
+        amount: "2,000",
+        status: "debit",
+      },
+      {
+        name: "James",
+        icon: <Download />,
+        date: "Mar 27, 2024",
+        time: "11:04 AM",
+        amount: "210,000",
+        status: "credit",
+      },
       {
         name: "BRT Ticket",
         icon: <Expense />,
@@ -113,33 +141,78 @@ const transactions = [
         amount: "2,500",
         status: "debit",
       },
+    ],
+  },
+  {
+    month: "Feburary 2024",
+    data: [
       {
-        name: "Sophia",
+        name: "Zenith Bank",
+        icon: <Download />,
+        date: "Mar 27, 2024",
+        time: "09:21 PM",
+        amount: "21,000",
+        status: "credit",
+      },
+      {
+        name: "BRT Ticket",
+        icon: <Expense />,
+        date: "Mar 27, 2024",
+        time: "11:04 AM",
+        amount: "900",
+        status: "debit",
+      },
+      {
+        name: "James",
         icon: <Download />,
         date: "Mar 27, 2024",
         time: "11:04 AM",
-        amount: "42,000",
+        amount: "73,000",
         status: "credit",
+      },
+      {
+        name: "Airtel",
+        icon: <Topup />,
+        date: "Mar 27, 2024",
+        time: "11:04 AM",
+        amount: "2,500",
+        status: "debit",
       },
     ],
   },
   {
-    month: "June",
+    month: "January 2024",
     data: [
       {
-        name: "IKEC",
-        icon: <Internet />,
+        name: "Zenith Bank",
+        icon: <Download />,
+        date: "Mar 27, 2024",
+        time: "09:21 PM",
+        amount: "21,000",
+        status: "credit",
+      },
+      {
+        name: "BRT Ticket",
+        icon: <Expense />,
         date: "Mar 27, 2024",
         time: "11:04 AM",
-        amount: "11,400",
+        amount: "900",
         status: "debit",
       },
       {
-        name: "Glo",
+        name: "James",
+        icon: <Download />,
+        date: "Mar 27, 2024",
+        time: "11:04 AM",
+        amount: "73,000",
+        status: "credit",
+      },
+      {
+        name: "Airtel",
         icon: <Topup />,
         date: "Mar 27, 2024",
         time: "11:04 AM",
-        amount: "800",
+        amount: "2,500",
         status: "debit",
       },
     ],
