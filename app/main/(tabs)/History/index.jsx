@@ -17,6 +17,7 @@ import Topup from "../../../../assets/icon/topup.svg";
 import Download from "../../../../assets/icon/download.svg";
 import Internet from "../../../../assets/icon/internet.svg";
 import Expense from "../../../../assets/icon/expense.svg";
+import { Link, useRouter } from "expo-router";
 
 const transactions = [
   {
@@ -218,40 +219,48 @@ const transactions = [
     ],
   },
 ];
-
-const TransactionCard = ({ item }) => (
-  <View className="flex-row justify-between py-2 mx-4">
-    <View className="flex-row space-x-2">
-      <View
-        style={{
-          backgroundColor: colorPalette?.primary2,
-          width: 40,
-          height: 40,
-        }}
-        className="rounded-full justify-center items-center"
-      >
-        {item?.icon}
-      </View>
-      <View>
-        <TextMedium style={{ color: colorPalette?.gray1, fontSize: 10 }}>
-          {item?.date} | {item?.time}
-        </TextMedium>
-        <TextMedium style={{ fontSize: 16 }}>{item?.name}</TextMedium>
-      </View>
-    </View>
-    <TextBold
-      style={{
-        fontSize: 18,
-        color:
-          item?.status === "debit" ? colorPalette.error : colorPalette.success,
-      }}
-    >
-      {item?.status === "debit" ? "-" : "+"} ₦{item?.amount}
-    </TextBold>
-  </View>
-);
-
 export default function History() {
+  const router = useRouter();
+
+  const TransactionCard = ({ item }) => (
+    <Pressable
+      onPress={() => {
+        router.push("/main/History/323");
+      }}
+      className="flex-row justify-between py-2 mx-4"
+    >
+      <View className="flex-row space-x-2">
+        <View
+          style={{
+            backgroundColor: colorPalette?.primary2,
+            width: 40,
+            height: 40,
+          }}
+          className="rounded-full justify-center items-center"
+        >
+          {item?.icon}
+        </View>
+        <View>
+          <TextMedium style={{ color: colorPalette?.gray1, fontSize: 10 }}>
+            {item?.date} | {item?.time}
+          </TextMedium>
+          <TextMedium style={{ fontSize: 16 }}>{item?.name}</TextMedium>
+        </View>
+      </View>
+      <TextBold
+        style={{
+          fontSize: 18,
+          color:
+            item?.status === "debit"
+              ? colorPalette.error
+              : colorPalette.success,
+        }}
+      >
+        {item?.status === "debit" ? "-" : "+"} ₦{item?.amount}
+      </TextBold>
+    </Pressable>
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <View className="flex-row justify-between px-4 items-center py-4">
