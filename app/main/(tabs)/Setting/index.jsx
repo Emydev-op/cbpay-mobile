@@ -11,18 +11,18 @@ import React from "react";
 import TextRegular, {
   TextBold,
   TextMedium,
-} from "../../../components/ThemeText";
-import { colorPalette } from "../../../constant/color";
+} from "../../../../components/ThemeText";
+import { colorPalette } from "../../../../constant/color";
 
 // icons
-import SearchIcon from "../../../assets/icon/search.svg";
-import ChevronRightIcon from "../../../assets/icon/chevron-right.svg";
-import ShirtIcon from "../../../assets/icon/shirt.svg";
-import NotificationIcon from "../../../assets/icon/bell.svg";
-import SecurityIcon from "../../../assets/icon/lock.svg";
-import TermsIcon from "../../../assets/icon/terms.svg";
-import AboutIcon from "../../../assets/icon/about.svg";
-import LogoutIcon from "../../../assets/icon/logout.svg";
+import SearchIcon from "../../../../assets/icon/search.svg";
+import ChevronRightIcon from "../../../../assets/icon/chevron-right.svg";
+import ShirtIcon from "../../../../assets/icon/shirt.svg";
+import NotificationIcon from "../../../../assets/icon/bell.svg";
+import SecurityIcon from "../../../../assets/icon/lock.svg";
+import TermsIcon from "../../../../assets/icon/terms.svg";
+import AboutIcon from "../../../../assets/icon/about.svg";
+import LogoutIcon from "../../../../assets/icon/logout.svg";
 
 const options = [
   { name: "Appearance", icon: <ShirtIcon /> },

@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function Qrcode() {
+export default function Appearance() {
   return (
     <View>
-      <Text>Qrcode</Text>
+      <Text>Appearance</Text>
     </View>
   )
 }

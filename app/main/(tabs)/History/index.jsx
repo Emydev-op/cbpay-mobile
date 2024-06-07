@@ -8,15 +8,15 @@ import {
   SectionList,
 } from "react-native";
 import React from "react";
-import { TextBold, TextMedium } from "../../../components/ThemeText";
-import { colorPalette } from "../../../constant/color";
+import { TextBold, TextMedium } from "../../../../components/ThemeText";
+import { colorPalette } from "../../../../constant/color";
 
 // icons
-import FilterIcon from "../../../assets/icon/filter.svg";
-import Topup from "../../../assets/icon/topup.svg";
-import Download from "../../../assets/icon/download.svg";
-import Internet from "../../../assets/icon/internet.svg";
-import Expense from "../../../assets/icon/expense.svg";
+import FilterIcon from "../../../../assets/icon/filter.svg";
+import Topup from "../../../../assets/icon/topup.svg";
+import Download from "../../../../assets/icon/download.svg";
+import Internet from "../../../../assets/icon/internet.svg";
+import Expense from "../../../../assets/icon/expense.svg";
 
 const transactions = [
   {

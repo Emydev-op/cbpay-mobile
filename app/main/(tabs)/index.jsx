@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import { TextBold, TextMedium } from "../../components/ThemeText";
-import { colorPalette } from "../../constant/color";
+import { TextBold, TextMedium } from "../../../components/ThemeText";
+import { colorPalette } from "../../../constant/color";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   heightPercentageToDP as hp,
@@ -18,16 +18,16 @@ import {
 import React, { useState } from "react";
 
 // icons
-import Bell from "../../assets/icon/bell.svg";
-import Transfer from "../../assets/icon/transfer.svg";
-import Topup from "../../assets/icon/topup.svg";
-import Bill from "../../assets/icon/bill.svg";
-import Request from "../../assets/icon/request.svg";
-import Withdraw from "../../assets/icon/withdraw.svg";
-import Download from "../../assets/icon/download.svg";
-import Internet from "../../assets/icon/internet.svg";
-import Expense from "../../assets/icon/expense.svg";
-import WalletCard from "../../components/WalletCard";
+import Bell from "../../../assets/icon/bell.svg";
+import Transfer from "../../../assets/icon/transfer.svg";
+import Topup from "../../../assets/icon/topup.svg";
+import Bill from "../../../assets/icon/bill.svg";
+import Request from "../../../assets/icon/request.svg";
+import Withdraw from "../../../assets/icon/withdraw.svg";
+import Download from "../../../assets/icon/download.svg";
+import Internet from "../../../assets/icon/internet.svg";
+import Expense from "../../../assets/icon/expense.svg";
+import WalletCard from "../../../components/WalletCard";
 
 const options = [
   { name: "Transfer", icon: <Transfer /> },
