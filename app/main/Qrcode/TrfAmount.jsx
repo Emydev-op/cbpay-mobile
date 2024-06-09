@@ -15,6 +15,7 @@ import TextRegular, {
   TextBold,
   TextMedium,
 } from "../../../components/ThemeText";
+import { useRouter } from "expo-router";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, ".", 0, "Del"];
 const pinLength = 6;
@@ -80,6 +81,7 @@ const DialPad = ({ onPress }) => {
 
 export default function TrfAmount() {
   const [amount, setAmount] = React.useState("");
+  const router = useRouter();
   const handlePress = (item) => {
     if (item === "Del") {
       setAmount((prev) => prev.slice(0, -1));
@@ -87,7 +89,6 @@ export default function TrfAmount() {
       setAmount((prev) => prev.concat(item.toString()));
     }
   };
-  console.log(amount, "amount");
   const formatAmount = (amount) => {
     if (amount === "") return "000";
     const [integerPart, decimalPart] = amount.split(".");
@@ -126,7 +127,7 @@ export default function TrfAmount() {
             <DialPad onPress={(item) => handlePress(item)} />
           </View>
           <Pressable
-            // onPress={() => router.push("")}
+            onPress={() => router.push("/main/Qrcode/TrfDetails ")}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full flex-row space-x-2 justify-center items-center mt-4 mx-4"
           >
