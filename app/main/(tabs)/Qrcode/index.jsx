@@ -68,6 +68,7 @@ export default function App() {
   const handleQR = (data) => {
     if (!hasScanned && data.data) {
       setHasScanned(true);
+      setFlashMode(false);
       router.push("/main/Qrcode/TrfAmount");
     }
   };
@@ -119,6 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 24,
+    backgroundColor: "white",
   },
   camera: {
     flex: 1,

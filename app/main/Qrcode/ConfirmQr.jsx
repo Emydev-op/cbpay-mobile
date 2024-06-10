@@ -16,8 +16,9 @@ import TextRegular, {
   TextMedium,
 } from "../../../components/ThemeText";
 import { useRouter } from "expo-router";
+import Modal from "react-native-modal";
 
-const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, ".", 0, "Del"];
+const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
 
 const DialPad = ({ onPress }) => {
@@ -79,64 +80,84 @@ const DialPad = ({ onPress }) => {
   );
 };
 
-export default function TrfAmount() {
-  const [amount, setAmount] = React.useState("");
+export default function ConfirmQr() {
+  const [pinCode, setPinCode] = React.useState([]);
   const router = useRouter();
-  const handlePress = (item) => {
-    if (item === "Del") {
-      setAmount((prev) => prev.slice(0, -1));
-    } else {
-      setAmount((prev) => prev.concat(item.toString()));
+  React.useEffect(() => {
+    if (pinCode.length === 6) {
+      router.push("/main/Qrcode/TrfReceipt");
     }
-  };
-  const formatAmount = (amount) => {
-    if (amount === "") return "000";
-    const [integerPart, decimalPart] = amount.split(".");
-    const formattedInteger = new Intl.NumberFormat().format(integerPart);
-    return decimalPart
-      ? `${formattedInteger}.${decimalPart}`
-      : formattedInteger;
-  };
+  }, [pinCode]);
 
   return (
     <SafeAreaView style={styles.container}>
       <SignUpNav name={"Scan QR"} />
-      <View className="flex-1 justify-between">
-        <View className="justify-center items-center space-y-1 flex-1">
-          <TextRegular
-            className="text-lg"
-            style={{ color: colorPalette.gray2 }}
-          >
-            Amount
-          </TextRegular>
-          <TextBold
-            className="text-4xl"
-            style={{ color: colorPalette.primary }}
-          >
-            {formatAmount(amount)}
-          </TextBold>
-          <TextBold
-            className="text-base"
-            style={{ color: colorPalette.primary }}
-          >
-            NGN
-          </TextBold>
-        </View>
-        <View className="pb-4">
-          <View className="items-center pb-2">
-            <DialPad onPress={(item) => handlePress(item)} />
-          </View>
-          <Pressable
-            onPress={() => router.push("/main/Qrcode/TrfDetails ")}
-            style={{ height: hp(7), backgroundColor: colorPalette.primary }}
-            className="rounded-full flex-row space-x-2 justify-center items-center mt-4 mx-4"
-          >
-            <TextMedium
-              style={{ fontSize: hp(2.4), color: colorPalette.white }}
+      <View className="pb-4 flex-1 justify-between">
+        <View className="flex-1 justify-evenly">
+          <View className="items-center space-y-2.5">
+            <View
+              className="w-16 h-16 justify-center items-center rounded-full"
+              style={{ backgroundColor: colorPalette.primary2 }}
             >
-              Continue
-            </TextMedium>
-          </Pressable>
+              <TextBold
+                style={{
+                  color: colorPalette.primary,
+                  fontSize: 40,
+                }}
+              >
+                A
+              </TextBold>
+            </View>
+            <TextBold
+              style={{
+                color: colorPalette.primary,
+                fontSize: 20,
+              }}
+            >
+              Anowi Kosi Reginald
+            </TextBold>
+          </View>
+          <View className="items-center space-y-4">
+            <TextRegular
+              style={{
+                color: colorPalette.gray2,
+                fontSize: 13,
+              }}
+            >
+              Passcode
+            </TextRegular>
+            <View className="flex-row space-x-4 pt-1">
+              {[...Array(pinLength).keys()].map((index) => {
+                const isSelected =
+                  pinCode[index] !== undefined && pinCode[index] !== null;
+                return (
+                  <View
+                    style={{
+                      width: hp(2.1),
+                      height: hp(2.1),
+                      borderRadius: 45,
+                      backgroundColor: isSelected
+                        ? colorPalette.primary
+                        : colorPalette.primary3,
+                    }}
+                    key={index}
+                  />
+                );
+              })}
+            </View>
+          </View>
+        </View>
+        <View className="pb-6 items-center">
+          <DialPad
+            onPress={(item) => {
+              if (item === "Del") {
+                setPinCode((prev) => prev.slice(0, prev.length - 1));
+              } else if (typeof item === "number") {
+                pinCode.length !== pinLength &&
+                  setPinCode((prev) => [...prev, item]);
+              }
+            }}
+          />
         </View>
       </View>
     </SafeAreaView>

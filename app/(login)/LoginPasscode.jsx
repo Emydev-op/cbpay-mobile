@@ -12,7 +12,6 @@ import {
 import React, { useState, useEffect } from "react";
 import {
   heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import TextRegular, { TextBold } from "../../components/ThemeText";
 import { colorPalette } from "../../constant/color";

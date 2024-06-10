@@ -15,8 +15,10 @@ import TextRegular, {
   TextMedium,
 } from "../../../components/ThemeText";
 import ScanIcon from "../../../assets/icon/scanqr.svg";
+import { useRouter } from "expo-router";
 
 export default function TrfDetails() {
+  const router = useRouter()
   return (
     <SafeAreaView style={styles.container}>
       <SignUpNav name={"Scan QR"} />
@@ -83,7 +85,7 @@ export default function TrfDetails() {
         </View>
         <View className="pb-4">
           <Pressable
-            // onPress={() => router.push("")}
+            onPress={() => router.push("/main/Qrcode/ConfirmQr")}
             style={{ height: hp(7), backgroundColor: colorPalette.primary }}
             className="rounded-full flex-row space-x-2 justify-center items-center mt-4 mx-4"
           >
@@ -103,5 +105,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    backgroundColor: "white",
   },
 });
