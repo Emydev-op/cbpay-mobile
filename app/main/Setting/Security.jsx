@@ -7,7 +7,9 @@ import {
   Switch,
 } from "react-native";
 import React from "react";
+import { useRouter } from "expo-router";
 import SignUpNav from "../../../components/signup/SignUpNav";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { colorPalette } from "../../../constant/color";
 import TextRegular from "../../../components/ThemeText";
 
@@ -16,9 +18,8 @@ import MoonIcon from "../../../assets/icon/moon.svg";
 import GlobeIcon from "../../../assets/icon/globe.svg";
 import ChevronRightIcon from "../../../assets/icon/chevron-right.svg";
 
-
-export default function Appearance() {
-  // const router = useRouter();
+export default function Security() {
+  const router = useRouter();
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
