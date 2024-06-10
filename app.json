@@ -62,6 +62,14 @@
             "node_modules/@expo-google-fonts/intedm-sansr/DMSans_700Bold.ttf"
           ]
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow CBPay to access your camera",
+          "microphonePermission": "Allow CBPay to access your microphone",
+          "recordAudioAndroid": true
+        }
       ]
     ],
     "experiments": {

@@ -11,21 +11,22 @@ import React from "react";
 import TextRegular, {
   TextBold,
   TextMedium,
-} from "../../../components/ThemeText";
-import { colorPalette } from "../../../constant/color";
+} from "../../../../components/ThemeText";
+import { colorPalette } from "../../../../constant/color";
 
 // icons
-import SearchIcon from "../../../assets/icon/search.svg";
-import ChevronRightIcon from "../../../assets/icon/chevron-right.svg";
-import ShirtIcon from "../../../assets/icon/shirt.svg";
-import NotificationIcon from "../../../assets/icon/bell.svg";
-import SecurityIcon from "../../../assets/icon/lock.svg";
-import TermsIcon from "../../../assets/icon/terms.svg";
-import AboutIcon from "../../../assets/icon/about.svg";
-import LogoutIcon from "../../../assets/icon/logout.svg";
+import SearchIcon from "../../../../assets/icon/search.svg";
+import ChevronRightIcon from "../../../../assets/icon/chevron-right.svg";
+import ShirtIcon from "../../../../assets/icon/shirt.svg";
+import NotificationIcon from "../../../../assets/icon/bell.svg";
+import SecurityIcon from "../../../../assets/icon/lock.svg";
+import TermsIcon from "../../../../assets/icon/terms.svg";
+import AboutIcon from "../../../../assets/icon/about.svg";
+import LogoutIcon from "../../../../assets/icon/logout.svg";
+import { useRouter } from "expo-router";
 
 const options = [
-  { name: "Appearance", icon: <ShirtIcon /> },
+  { name: "Appearance", icon: <ShirtIcon />, path: "/main/Setting/Appearance" },
   { name: "Notification", icon: <NotificationIcon /> },
   { name: "Security", icon: <SecurityIcon /> },
   { name: "Terms & Conditions", icon: <TermsIcon /> },
@@ -33,8 +34,8 @@ const options = [
 ];
 
 export default function Setting() {
+  const router = useRouter();
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
   return (
     <SafeAreaView style={styles.container}>
@@ -115,7 +116,10 @@ export default function Setting() {
               );
             }
             return (
-              <View
+              <Pressable
+                onPress={() => {
+                  data?.path && router.push(data?.path);
+                }}
                 key={data?.name}
                 className="flex-row justify-between items-center px-4 py-3"
               >
@@ -126,7 +130,7 @@ export default function Setting() {
                   </TextRegular>
                 </View>
                 <ChevronRightIcon />
-              </View>
+              </Pressable>
             );
           })}
         </View>

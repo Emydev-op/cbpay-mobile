@@ -1,21 +1,23 @@
 import { Pressable, View } from "react-native";
 import React from "react";
-import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { colorPalette } from "../../constant/color";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { TextMedium } from "../../components/ThemeText";
 import { useRouter } from "expo-router";
 
-export default function SignUpNav({name}) {
+import ChevronIcon from "../../assets/icon/chevron-left.svg";
+
+export default function SignUpNav({ name }) {
   const router = useRouter();
   return (
     <View className="flex-row mb-6 px-3 py-4 items-center space-x-3">
       <Pressable
         onPress={() => {
           router.back();
-        }} className="px-1"
+        }}
+        className="px-1"
       >
-        <ChevronLeftIcon color={colorPalette.gray2} size={hp(3)} style={{padding:hp(2)}} />
+        <ChevronIcon style={{ padding: hp(2) }} />
       </Pressable>
       <TextMedium
         className=""

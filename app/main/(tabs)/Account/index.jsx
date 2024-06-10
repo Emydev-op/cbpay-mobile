@@ -7,9 +7,9 @@ import {
   ScrollView,
 } from "react-native";
 import React from "react";
-import { TextBold } from "../../../components/ThemeText";
-import { colorPalette } from "../../../constant/color";
-import WalletCard from "../../../components/WalletCard";
+import { TextBold } from "../../../../components/ThemeText";
+import { colorPalette } from "../../../../constant/color";
+import WalletCard from "../../../../components/WalletCard";
 
 export default function Account() {
   return (
