@@ -18,7 +18,7 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>CBPay.</Text>
     </View>
   );
 }

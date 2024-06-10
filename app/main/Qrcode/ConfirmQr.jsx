@@ -16,7 +16,7 @@ import TextRegular, {
   TextMedium,
 } from "../../../components/ThemeText";
 import { useRouter } from "expo-router";
-
+import { Audio } from "expo-av";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
@@ -82,10 +82,30 @@ const DialPad = ({ onPress }) => {
 
 export default function ConfirmQr() {
   const [pinCode, setPinCode] = React.useState([]);
+  const [sound, setSound] = React.useState();
   const router = useRouter();
+
+    //Handle Audio
+    async function playSound() {
+      const { sound } = await Audio.Sound.createAsync(
+        require("../../../assets/audio/mixkit-correct-answer-tone-2870.wav")
+      );
+      setSound(sound);
+      await sound.playAsync();
+    }
+
+    React.useEffect(() => {
+      return sound
+        ? () => {
+            sound.unloadAsync();
+          }
+        : undefined;
+    }, [sound]);
+
   React.useEffect(() => {
     if (pinCode.length === 6) {
       router.push("/main/Qrcode/TrfReceipt");
+      playSound();
     }
   }, [pinCode]);
 
