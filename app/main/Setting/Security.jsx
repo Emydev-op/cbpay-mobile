@@ -9,13 +9,12 @@ import {
 import React from "react";
 import { useRouter } from "expo-router";
 import SignUpNav from "../../../components/signup/SignUpNav";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { colorPalette } from "../../../constant/color";
 import TextRegular from "../../../components/ThemeText";
 
 // icon
-import MoonIcon from "../../../assets/icon/moon.svg";
-import GlobeIcon from "../../../assets/icon/globe.svg";
+import BiometricsIcon from "../../../assets/icon/fingerprint-sm.svg";
+import SecurityIcon from "../../../assets/icon/pin-code.svg";
 import ChevronRightIcon from "../../../assets/icon/chevron-right.svg";
 
 export default function Security() {
@@ -25,22 +24,26 @@ export default function Security() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SignUpNav name={"Appearance"} />
-      <View className=" px-5 ">
+      <SignUpNav name={"Security"} />
+      <View className=" px-5 space-y-1">
         <View className="flex-row justify-between items-center mb-3">
           <View className="flex-row items-center gap-x-2">
-            <GlobeIcon />
-            <View>
-              <TextRegular style={{ fontSize: 18 }}>Language</TextRegular>
-              <TextRegular style={{ fontSize: 14 }}>English</TextRegular>
-            </View>
+            <SecurityIcon />
+            <TextRegular style={{ fontSize: 18 }}>Change Passcode</TextRegular>
           </View>
           <ChevronRightIcon />
         </View>
         <View className="flex-row justify-between items-center">
           <View className="flex-row items-center gap-x-2">
-            <MoonIcon />
-            <TextRegular style={{ fontSize: 18 }}>Dark Mode</TextRegular>
+            <BiometricsIcon  />
+            <View>
+              <TextRegular style={{ fontSize: 18 }}>
+                Face ID/Touch ID
+              </TextRegular>
+              <TextRegular style={{ fontSize: 14 }}>
+                Use to login your app.
+              </TextRegular>
+            </View>
           </View>
           <Switch
             value={isSwitchOn}
