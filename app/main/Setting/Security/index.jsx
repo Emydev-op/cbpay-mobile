@@ -5,17 +5,18 @@ import {
   Platform,
   SafeAreaView,
   Switch,
+  Pressable,
 } from "react-native";
 import React from "react";
 import { useRouter } from "expo-router";
-import SignUpNav from "../../../components/signup/SignUpNav";
-import { colorPalette } from "../../../constant/color";
-import TextRegular from "../../../components/ThemeText";
+import SignUpNav from "../../../../components/signup/SignUpNav";
+import { colorPalette } from "../../../../constant/color";
+import TextRegular from "../../../../components/ThemeText";
 
 // icon
-import BiometricsIcon from "../../../assets/icon/fingerprint-sm.svg";
-import SecurityIcon from "../../../assets/icon/pin-code.svg";
-import ChevronRightIcon from "../../../assets/icon/chevron-right.svg";
+import BiometricsIcon from "../../../../assets/icon/fingerprint-sm.svg";
+import SecurityIcon from "../../../../assets/icon/pin-code.svg";
+import ChevronRightIcon from "../../../../assets/icon/chevron-right.svg";
 
 export default function Security() {
   const router = useRouter();
@@ -26,16 +27,21 @@ export default function Security() {
     <SafeAreaView style={styles.container}>
       <SignUpNav name={"Security"} />
       <View className=" px-5 space-y-1">
-        <View className="flex-row justify-between items-center mb-3">
+        <Pressable
+          onPress={() => {
+            router.replace("main/Setting/Security/CurrentPassword");
+          }}
+          className="flex-row justify-between items-center py-3 mb-3"
+        >
           <View className="flex-row items-center gap-x-2">
             <SecurityIcon />
             <TextRegular style={{ fontSize: 18 }}>Change Passcode</TextRegular>
           </View>
           <ChevronRightIcon />
-        </View>
+        </Pressable>
         <View className="flex-row justify-between items-center">
           <View className="flex-row items-center gap-x-2">
-            <BiometricsIcon  />
+            <BiometricsIcon />
             <View>
               <TextRegular style={{ fontSize: 18 }}>
                 Face ID/Touch ID
