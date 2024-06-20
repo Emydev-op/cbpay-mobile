@@ -26,7 +26,7 @@ export default function Appearance() {
     <SafeAreaView style={styles.container}>
       <SignUpNav name={"Appearance"} />
       <View className=" px-5 ">
-        <View className="flex-row justify-between items-center mb-3">
+        <View className="flex-row py-1 justify-between items-center mb-3">
           <View className="flex-row items-center gap-x-2">
             <GlobeIcon />
             <View>

@@ -28,7 +28,7 @@ import { useRouter } from "expo-router";
 const options = [
   { name: "Appearance", icon: <ShirtIcon />, path: "/main/Setting/Appearance" },
   { name: "Notification", icon: <NotificationIcon /> },
-  { name: "Security", icon: <SecurityIcon /> },
+  { name: "Security", icon: <SecurityIcon />, path: "/main/Setting/Security" },
   { name: "Terms & Conditions", icon: <TermsIcon /> },
   { name: "About", icon: <AboutIcon /> },
 ];

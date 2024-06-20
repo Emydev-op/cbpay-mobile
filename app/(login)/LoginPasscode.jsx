@@ -10,14 +10,13 @@ import {
   SafeAreaView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import {
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import TextRegular, { TextBold } from "../../components/ThemeText";
 import { colorPalette } from "../../constant/color";
 import { BackspaceIcon, FingerPrintIcon } from "react-native-heroicons/outline";
 import * as Haptics from "expo-haptics";
 import { useRouter } from "expo-router";
+import { Audio } from "expo-av";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
@@ -87,9 +86,29 @@ const DialPad = ({ onPress }) => {
 export default function LoginPasscode() {
   const [pinCode, setPinCode] = useState([]);
   const router = useRouter();
+  const [sound, setSound] = useState();
+
+  //Handle Audio
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("../../assets/audio/mixkit-correct-answer-tone-2870.wav")
+    );
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   useEffect(() => {
     if (pinCode.length === 6) {
       router.push("/main");
+      playSound();
     }
   }, [pinCode]);
 

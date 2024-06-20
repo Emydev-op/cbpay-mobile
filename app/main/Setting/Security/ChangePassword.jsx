@@ -6,17 +6,17 @@ import {
   SafeAreaView,
   Pressable,
   FlatList,
+  Alert,
 } from "react-native";
-import React from "react";
-import SignUpNav from "../../../components/signup/SignUpNav";
+import React, { useState, useEffect } from "react";
+import SignUpNav from "../../../../components/signup/SignUpNav";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { colorPalette } from "../../../constant/color";
+import { colorPalette } from "../../../../constant/color";
 import TextRegular, {
   TextBold,
   TextMedium,
-} from "../../../components/ThemeText";
+} from "../../../../components/ThemeText";
 import { useRouter } from "expo-router";
-import { Audio } from "expo-av";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
@@ -80,38 +80,42 @@ const DialPad = ({ onPress }) => {
   );
 };
 
-export default function ConfirmQr() {
-  const [pinCode, setPinCode] = React.useState([]);
-  const [sound, setSound] = React.useState();
+export default function ChangePassword() {
+  const [pinCode, setPinCode] = useState([]);
+  const [confirmPinCode, setConfirmPinCode] = useState([]);
+  const [confirmCode, setConfirmCode] = useState(false);
   const router = useRouter();
 
-    //Handle Audio
-    async function playSound() {
-      const { sound } = await Audio.Sound.createAsync(
-        require("../../../assets/audio/mixkit-correct-answer-tone-2870.wav")
-      );
-      setSound(sound);
-      await sound.playAsync();
-    }
-
-    React.useEffect(() => {
-      return sound
-        ? () => {
-            sound.unloadAsync();
-          }
-        : undefined;
-    }, [sound]);
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (pinCode.length === 6) {
-      router.push("/main/Qrcode/TrfReceipt");
-      playSound();
+      setConfirmCode(true);
     }
-  }, [pinCode]);
+    if (confirmCode && confirmPinCode.length === 6) {
+      console.log("work");
+      router.replace("main/Setting/Security");
+    }
+  }, [pinCode, confirmPinCode]);
+
+  const handleDialPad = (item) => {
+    if (!confirmCode) {
+      if (item === "Del") {
+        setPinCode((prev) => prev.slice(0, prev.length - 1));
+      } else if (typeof item === "number") {
+        pinCode.length !== pinLength && setPinCode((prev) => [...prev, item]);
+      }
+    } else {
+      if (item === "Del") {
+        setConfirmPinCode((prev) => prev.slice(0, prev.length - 1));
+      } else if (typeof item === "number") {
+        confirmPinCode.length !== pinLength &&
+          setConfirmPinCode((prev) => [...prev, item]);
+      }
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <SignUpNav name={"Scan QR"} />
+      <SignUpNav name={"Change Password"} />
       <View className="pb-4 flex-1 justify-between">
         <View className="flex-1 justify-evenly">
           <View className="items-center space-y-2.5">
@@ -125,7 +129,7 @@ export default function ConfirmQr() {
                   fontSize: 40,
                 }}
               >
-                A
+                M
               </TextBold>
             </View>
             <TextBold
@@ -134,7 +138,7 @@ export default function ConfirmQr() {
                 fontSize: 20,
               }}
             >
-              Anowi Kosi Reginald
+              Michael Umeh Samsuel
             </TextBold>
           </View>
           <View className="items-center space-y-4">
@@ -144,12 +148,14 @@ export default function ConfirmQr() {
                 fontSize: 13,
               }}
             >
-              Passcode
+              {confirmCode ? "Confirm Pascode" : "New Passcode"}
             </TextRegular>
             <View className="flex-row space-x-4 pt-1">
               {[...Array(pinLength).keys()].map((index) => {
-                const isSelected =
-                  pinCode[index] !== undefined && pinCode[index] !== null;
+                const isSelected = confirmCode
+                  ? confirmPinCode[index] !== undefined &&
+                    confirmPinCode[index] !== null
+                  : pinCode[index] !== undefined && pinCode[index] !== null;
                 return (
                   <View
                     style={{
@@ -168,16 +174,7 @@ export default function ConfirmQr() {
           </View>
         </View>
         <View className="pb-6 items-center">
-          <DialPad
-            onPress={(item) => {
-              if (item === "Del") {
-                setPinCode((prev) => prev.slice(0, prev.length - 1));
-              } else if (typeof item === "number") {
-                pinCode.length !== pinLength &&
-                  setPinCode((prev) => [...prev, item]);
-              }
-            }}
-          />
+          <DialPad onPress={(item) => handleDialPad(item)} />
         </View>
       </View>
     </SafeAreaView>

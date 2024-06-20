@@ -7,16 +7,15 @@ import {
   Pressable,
   FlatList,
 } from "react-native";
-import React from "react";
-import SignUpNav from "../../../components/signup/SignUpNav";
+import React, { useState, useEffect, useCallback } from "react";
+import SignUpNav from "../../../../components/signup/SignUpNav";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { colorPalette } from "../../../constant/color";
+import { colorPalette } from "../../../../constant/color";
 import TextRegular, {
   TextBold,
   TextMedium,
-} from "../../../components/ThemeText";
-import { useRouter } from "expo-router";
-import { Audio } from "expo-av";
+} from "../../../../components/ThemeText";
+import { useRouter, useFocusEffect } from "expo-router";
 
 const dialPad = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "Del"];
 const pinLength = 6;
@@ -80,38 +79,25 @@ const DialPad = ({ onPress }) => {
   );
 };
 
-export default function ConfirmQr() {
-  const [pinCode, setPinCode] = React.useState([]);
-  const [sound, setSound] = React.useState();
+export default function CurrentPassword() {
+  const [pinCode, setPinCode] = useState([]);
   const router = useRouter();
 
-    //Handle Audio
-    async function playSound() {
-      const { sound } = await Audio.Sound.createAsync(
-        require("../../../assets/audio/mixkit-correct-answer-tone-2870.wav")
-      );
-      setSound(sound);
-      await sound.playAsync();
-    }
+  useFocusEffect(
+    useCallback(() => {
+      setPinCode([]);
+    }, [])
+  );
 
-    React.useEffect(() => {
-      return sound
-        ? () => {
-            sound.unloadAsync();
-          }
-        : undefined;
-    }, [sound]);
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (pinCode.length === 6) {
-      router.push("/main/Qrcode/TrfReceipt");
-      playSound();
+      router.replace("main/Setting/Security/ChangePassword");
     }
   }, [pinCode]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <SignUpNav name={"Scan QR"} />
+      <SignUpNav name={"Change Password"} />
       <View className="pb-4 flex-1 justify-between">
         <View className="flex-1 justify-evenly">
           <View className="items-center space-y-2.5">
@@ -125,7 +111,7 @@ export default function ConfirmQr() {
                   fontSize: 40,
                 }}
               >
-                A
+                M
               </TextBold>
             </View>
             <TextBold
@@ -134,7 +120,7 @@ export default function ConfirmQr() {
                 fontSize: 20,
               }}
             >
-              Anowi Kosi Reginald
+              Michael Umeh Samsuel
             </TextBold>
           </View>
           <View className="items-center space-y-4">
@@ -144,7 +130,7 @@ export default function ConfirmQr() {
                 fontSize: 13,
               }}
             >
-              Passcode
+              Current Passcode
             </TextRegular>
             <View className="flex-row space-x-4 pt-1">
               {[...Array(pinLength).keys()].map((index) => {
